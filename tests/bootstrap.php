@@ -66,7 +66,7 @@ $cache = [
 
 Cache::setConfig($cache);
 
-Plugin::load('Attachments', ['path' => ROOT . DS, 'autoload' => true, 'bootstrap' => true, 'routes' => true]);
+Plugin::load('Assets', ['path' => ROOT . DS, 'autoload' => true, 'bootstrap' => true, 'routes' => true]);
 
 DispatcherFactory::add('Routing');
 DispatcherFactory::add('ControllerFactory');

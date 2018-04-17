@@ -1,24 +1,24 @@
 <?php
-namespace Attachments\Model\Entity;
+namespace Assets\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * Attachment Entity
+ * Asset Entity
  *
  * @property int $id
  * @property string $model
  * @property int $foreign_key
  * @property $file_name
  * @property string $dir
- * @property string $type
- * @property int $size
+ * @property string $file_type
+ * @property int $file_size
  * @property bool $active
  * @property string $params
- * @property \Cake\I18n\FrozenTime $updated
+ * @property \Cake\I18n\FrozenTime $modified
  * @property \Cake\I18n\FrozenTime $created
  */
-class Attachment extends Entity
+class Asset extends Entity
 {
 
     /**
@@ -35,11 +35,11 @@ class Attachment extends Entity
         'foreign_key' => true,
         'file_name' => true,
         'dir' => true,
-        'type' => true,
-        'size' => true,
+        'file_type' => true,
+        'file_size' => true,
         'active' => true,
         'params' => true,
-        'updated' => true,
+        'modified' => true,
         'created' => true
     ];
 }

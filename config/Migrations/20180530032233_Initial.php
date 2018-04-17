@@ -1,7 +1,7 @@
 <?php
 use Migrations\AbstractMigration;
 
-class AttachmentsInitialMigration extends AbstractMigration
+class Initial extends AbstractMigration
 {
 
     public $autoId = false;
@@ -9,7 +9,7 @@ class AttachmentsInitialMigration extends AbstractMigration
     public function up()
     {
 
-        $this->table('attachments')
+        $this->table('assets')
             ->addColumn('id', 'integer', [
                 'autoIncrement' => true,
                 'default' => null,
@@ -35,20 +35,20 @@ class AttachmentsInitialMigration extends AbstractMigration
             ])
             ->addColumn('dir', 'string', [
                 'default' => null,
-                'limit' => 50,
+                'limit' => 100,
                 'null' => false,
             ])
-            ->addColumn('type', 'string', [
+            ->addColumn('file_type', 'string', [
                 'default' => null,
                 'limit' => 50,
                 'null' => false,
             ])
-            ->addColumn('size', 'integer', [
+            ->addColumn('file_size', 'integer', [
                 'default' => '0',
                 'limit' => 11,
                 'null' => false,
             ])
-            ->addColumn('active', 'boolean', [
+            ->addColumn('viewable', 'boolean', [
                 'default' => true,
                 'limit' => null,
                 'null' => false,
@@ -58,7 +58,7 @@ class AttachmentsInitialMigration extends AbstractMigration
                 'limit' => null,
                 'null' => true,
             ])
-            ->addColumn('updated', 'datetime', [
+            ->addColumn('modified', 'datetime', [
                 'default' => null,
                 'limit' => null,
                 'null' => true,
@@ -68,10 +68,30 @@ class AttachmentsInitialMigration extends AbstractMigration
                 'limit' => null,
                 'null' => true,
             ])
+            ->addColumn('created_by', 'integer', [
+                'default' => null,
+                'limit' => 20,
+                'null' => true,
+            ])
+            ->addColumn('modified_by', 'integer', [
+                'default' => null,
+                'limit' => 20,
+                'null' => true,
+            ])
             ->addIndex(
                 [
                     'model',
                     'foreign_key',
+                ]
+            )
+            ->addIndex(
+                [
+                    'created_by',
+                ]
+            )
+            ->addIndex(
+                [
+                    'modified_by',
                 ]
             )
             ->create();
@@ -79,6 +99,6 @@ class AttachmentsInitialMigration extends AbstractMigration
 
     public function down()
     {
-        $this->dropTable('attachments');
+        $this->dropTable('assets');
     }
 }

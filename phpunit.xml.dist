@@ -13,7 +13,7 @@
 
     <!-- Add any additional test suites you want to run here -->
     <testsuites>
-        <testsuite name="Attachments">
+        <testsuite name="Assets">
             <directory>./tests/TestCase/</directory>
         </testsuite>
     </testsuites>

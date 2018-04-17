@@ -1,6 +1,6 @@
 <?php
 
-namespace Attachments\Controller;
+namespace Assets\Controller;
 
 use App\Controller\AppController as BaseController;
 

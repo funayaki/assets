@@ -4,11 +4,11 @@ use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
 
 Router::plugin(
-    'Attachments',
+    'Assets',
     ['path' => '/'],
     function (RouteBuilder $routes) {
         $routes->prefix('admin', function (RouteBuilder $routes) {
-            $routes->scope('/attachments', [], function (RouteBuilder $routes) {
+            $routes->scope('/assets', [], function (RouteBuilder $routes) {
                 $routes->fallbacks();
             });
         });

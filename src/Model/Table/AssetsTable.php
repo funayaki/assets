@@ -1,5 +1,5 @@
 <?php
-namespace Attachments\Model\Table;
+namespace Assets\Model\Table;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -7,19 +7,19 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Attachments Model
+ * Assets Model
  *
- * @method \Attachments\Model\Entity\Attachment get($primaryKey, $options = [])
- * @method \Attachments\Model\Entity\Attachment newEntity($data = null, array $options = [])
- * @method \Attachments\Model\Entity\Attachment[] newEntities(array $data, array $options = [])
- * @method \Attachments\Model\Entity\Attachment|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \Attachments\Model\Entity\Attachment patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \Attachments\Model\Entity\Attachment[] patchEntities($entities, array $data, array $options = [])
- * @method \Attachments\Model\Entity\Attachment findOrCreate($search, callable $callback = null, $options = [])
+ * @method \Assets\Model\Entity\Asset get($primaryKey, $options = [])
+ * @method \Assets\Model\Entity\Asset newEntity($data = null, array $options = [])
+ * @method \Assets\Model\Entity\Asset[] newEntities(array $data, array $options = [])
+ * @method \Assets\Model\Entity\Asset|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \Assets\Model\Entity\Asset patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \Assets\Model\Entity\Asset[] patchEntities($entities, array $data, array $options = [])
+ * @method \Assets\Model\Entity\Asset findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class AttachmentsTable extends Table
+class AssetsTable extends Table
 {
 
     /**
@@ -32,7 +32,7 @@ class AttachmentsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('attachments');
+        $this->setTable('assets');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
@@ -53,8 +53,12 @@ class AttachmentsTable extends Table
                         $path . $entity->{$field},
                     ];
                 },
-                'keepFilesOnDelete' => false
-            ]
+                'keepFilesOnDelete' => false,
+                'fields' => [
+                    'size' => 'file_size',
+                    'type' => 'file_type',
+                ]
+            ],
         ]);
     }
 
@@ -86,14 +90,14 @@ class AttachmentsTable extends Table
 
         $validator
             ->scalar('dir')
-            ->maxLength('dir', 50);
+            ->maxLength('dir', 100);
 
         $validator
-            ->scalar('type')
-            ->maxLength('type', 50);
+            ->scalar('file_type')
+            ->maxLength('file_type', 50);
 
         $validator
-            ->integer('size');
+            ->integer('file_size');
 
         $validator
             ->boolean('active');
