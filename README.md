@@ -1,0 +1,1 @@
+# Attachments plugin for CakePHP
