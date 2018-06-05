@@ -1,8 +1,6 @@
 <?php
 namespace Assets\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -57,7 +55,8 @@ class AssetsTable extends Table
                 'fields' => [
                     'size' => 'file_size',
                     'type' => 'file_type',
-                ]
+                ],
+                'path' => 'webroot{DS}files{DS}{model}{DS}{field}{DS}{microtime}{DS}',
             ],
         ]);
     }
