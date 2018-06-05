@@ -60,7 +60,9 @@ class AssetsController extends AppController
             $this->Flash->error(__('The asset could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect($this->referer([
+            'action' => 'index'
+        ]));
     }
 
     /**
