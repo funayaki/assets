@@ -1,6 +1,8 @@
 <?php
 namespace Assets\Model\Table;
 
+use Assets\Model\Entity\Asset;
+use Cake\Filesystem\Folder;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -106,5 +108,18 @@ class AssetsTable extends Table
             ->allowEmpty('params');
 
         return $validator;
+    }
+
+    /**
+     * @param Asset $asset
+     * @param array $options
+     * @return bool
+     */
+    public function deleteAndSave(Asset $asset, array $options = [])
+    {
+        $folder = new Folder(ROOT . DS . $asset->dir);
+
+        $asset = $this->patchEntity($asset, $options);
+        return $folder->delete() && $this->save($asset);
     }
 }

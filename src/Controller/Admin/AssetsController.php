@@ -30,10 +30,35 @@ class AssetsController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->setTemplate('form');
+
         $asset = $this->Assets->newEntity();
         if ($this->request->is('post')) {
             $asset = $this->Assets->patchEntity($asset, $this->request->getData());
             if ($this->Assets->save($asset)) {
+                $this->Flash->success(__('The asset has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The asset could not be saved. Please, try again.'));
+        }
+        $this->set(compact('asset'));
+    }
+
+    /**
+     * Edit method
+     *
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     */
+    public function edit($id = null)
+    {
+        $this->viewBuilder()->setTemplate('form');
+
+        $asset = $this->Assets->get($id, [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            if ($this->Assets->deleteAndSave($asset, $this->request->getData())) {
                 $this->Flash->success(__('The asset has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
