@@ -58,7 +58,8 @@ class AssetsController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            if ($this->Assets->deleteAndSave($asset, $this->request->getData())) {
+            $asset = $this->Assets->patchEntity($asset, $this->request->getData());
+            if ($this->Assets->save($asset)) {
                 $this->Flash->success(__('The asset has been saved.'));
 
                 return $this->redirect(['action' => 'index']);

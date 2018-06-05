@@ -1,7 +1,9 @@
 <?php
 namespace Assets\Model\Table;
 
+use ArrayObject;
 use Assets\Model\Entity\Asset;
+use Cake\Event\Event;
 use Cake\Filesystem\Folder;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -111,15 +113,15 @@ class AssetsTable extends Table
     }
 
     /**
-     * @param Asset $asset
-     * @param array $options
-     * @return bool
+     * @param Event $event
+     * @param Asset $entity
+     * @param ArrayObject $options
      */
-    public function deleteAndSave(Asset $asset, array $options = [])
+    public function afterSave(Event $event, Asset $entity, ArrayObject $options)
     {
-        $folder = new Folder(ROOT . DS . $asset->dir);
-
-        $asset = $this->patchEntity($asset, $options);
-        return $folder->delete() && $this->save($asset);
+        if (!$entity->isNew()) {
+            $folder = new Folder(ROOT . DS . $entity->getOriginal('dir'));
+            $folder->delete();
+        }
     }
 }
