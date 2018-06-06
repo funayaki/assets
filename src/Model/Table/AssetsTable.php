@@ -117,6 +117,19 @@ class AssetsTable extends Table
      * @param Asset $entity
      * @param ArrayObject $options
      */
+    public function beforeSave(Event $event, Asset $entity, ArrayObject $options)
+    {
+        if ($entity->isNew()) {
+            // TODO Set model by user
+            $entity->model = $this->getAlias();
+        }
+    }
+
+    /**
+     * @param Event $event
+     * @param Asset $entity
+     * @param ArrayObject $options
+     */
     public function afterSave(Event $event, Asset $entity, ArrayObject $options)
     {
         if (!$entity->isNew()) {
