@@ -111,7 +111,8 @@ class AssetsController extends AppController
             return $response;
         }
 
+        $extension = pathinfo($file, PATHINFO_EXTENSION);
         return $response->withFile($file)
-            ->withType(pathinfo($file, PATHINFO_EXTENSION));
+            ->withType(strtolower($extension));
     }
 }
