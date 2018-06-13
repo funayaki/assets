@@ -40,11 +40,11 @@ class AssetsController extends AppController
         if ($this->request->is('post')) {
             $asset = $this->Assets->patchEntity($asset, $this->request->getData());
             if ($this->Assets->save($asset)) {
-                $this->Flash->success(__('The asset has been saved.'));
+                $this->Flash->success(__d('funayaki', 'The asset has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The asset could not be saved. Please, try again.'));
+            $this->Flash->error(__d('funayaki', 'The asset could not be saved. Please, try again.'));
         }
         $this->set(compact('asset'));
     }
@@ -64,11 +64,11 @@ class AssetsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $asset = $this->Assets->patchEntity($asset, $this->request->getData());
             if ($this->Assets->save($asset)) {
-                $this->Flash->success(__('The asset has been saved.'));
+                $this->Flash->success(__d('funayaki', 'The asset has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The asset could not be saved. Please, try again.'));
+            $this->Flash->error(__d('funayaki', 'The asset could not be saved. Please, try again.'));
         }
         $this->set(compact('asset'));
     }
@@ -85,9 +85,9 @@ class AssetsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $asset = $this->Assets->get($id);
         if ($this->Assets->delete($asset)) {
-            $this->Flash->success(__('The asset has been deleted.'));
+            $this->Flash->success(__d('funayaki', 'The asset has been deleted.'));
         } else {
-            $this->Flash->error(__('The asset could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('funayaki', 'The asset could not be deleted. Please, try again.'));
         }
 
         return $this->redirect($this->referer([

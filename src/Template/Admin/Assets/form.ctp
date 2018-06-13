@@ -26,7 +26,7 @@ echo $this->Form->control('file_name', [
 $this->end();
 
 $this->start('form-button');
-echo $this->Form->button(__('Submit'));
+echo $this->Form->button(__d('funayaki', 'Submit'));
 $this->end();
 
 $this->assign('form-end', $this->Form->end());

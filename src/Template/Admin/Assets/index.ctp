@@ -30,7 +30,7 @@ $this->end();
     <th><?= $this->Paginator->sort('file_size') ?></th>
     <th><?= $this->Paginator->sort('modified') ?></th>
     <th><?= $this->Paginator->sort('created') ?></th>
-    <th><?= __('Actions') ?></th>
+    <th><?= __d('funayaki', 'Actions') ?></th>
 </tr>
 </thead>
 <?php $this->end(); ?>
@@ -48,7 +48,7 @@ $this->end();
         <td class="actions" style="white-space:nowrap">
             <?= $this->Html->link(__d('funayaki', 'Download'), ['action' => 'download', $asset->id], ['class' => 'btn btn-default btn-xs', 'target' => '_blank']) ?>
             <?= $this->Html->link(__d('funayaki', 'Edit'), ['action' => 'edit', $asset->id], ['class' => 'btn btn-default btn-xs']) ?>
-            <?= $this->Form->postLink(__d('funayaki', 'Delete'), ['action' => 'delete', $asset->id], ['confirm' => __('Are you sure you want to delete # {0}?', $asset->id), 'class' => 'btn btn-danger btn-xs']) ?>
+            <?= $this->Form->postLink(__d('funayaki', 'Delete'), ['action' => 'delete', $asset->id], ['confirm' => __d('funayaki', 'Are you sure?', $asset->id), 'class' => 'btn btn-danger btn-xs']) ?>
         </td>
     </tr>
 <?php endforeach; ?>
