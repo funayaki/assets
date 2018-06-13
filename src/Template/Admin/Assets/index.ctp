@@ -46,6 +46,7 @@ $this->end();
         <td><?= h($asset->modified) ?></td>
         <td><?= h($asset->created) ?></td>
         <td class="actions" style="white-space:nowrap">
+            <?= $this->Html->link(__d('funayaki', 'Download'), ['action' => 'download', $asset->id], ['class' => 'btn btn-default btn-xs', 'target' => '_blank']) ?>
             <?= $this->Html->link(__d('funayaki', 'Edit'), ['action' => 'edit', $asset->id], ['class' => 'btn btn-default btn-xs']) ?>
             <?= $this->Form->postLink(__d('funayaki', 'Delete'), ['action' => 'delete', $asset->id], ['confirm' => __('Are you sure you want to delete # {0}?', $asset->id), 'class' => 'btn btn-danger btn-xs']) ?>
         </td>
