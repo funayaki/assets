@@ -18,7 +18,11 @@ class AssetsController extends AppController
      */
     public function index()
     {
-        $assets = $this->paginate($this->Assets);
+        $assets = $this->paginate($this->Assets, [
+            'order' => [
+                'Assets.created' => 'desc'
+            ]
+        ]);
 
         $this->set(compact('assets'));
     }
