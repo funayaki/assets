@@ -14,7 +14,7 @@ define('ROOT', dirname(__DIR__));
 define('TMP', ROOT . DS . 'tmp' . DS);
 define('LOGS', TMP . 'logs' . DS);
 define('CACHE', TMP . 'cache' . DS);
-define('APP', ROOT . DS . 'tests' . DS . 'test_app' . DS . 'src' . DS);
+define('APP', ROOT . DS . 'tests' . DS . 'TestApp' . DS . 'src' . DS);
 define('APP_DIR', 'src');
 define('CAKE_CORE_INCLUDE_PATH', ROOT . '/vendor/cakephp/cakephp');
 define('CORE_PATH', CAKE_CORE_INCLUDE_PATH . DS);
@@ -30,7 +30,7 @@ Configure::write('App', [
     'namespace' => 'App',
     'encoding' => 'UTF-8',
     'paths' => [
-        'templates' => [ROOT . DS . 'tests' . DS . 'test_app' . DS . 'src' . DS . 'Template' . DS],
+        'templates' => [ROOT . DS . 'tests' . DS . 'TestApp' . DS . 'src' . DS . 'Template' . DS],
     ]
 ]);
 
@@ -67,6 +67,7 @@ $cache = [
 Cache::setConfig($cache);
 
 Plugin::load('Josegonzalez/Upload');
+
 Plugin::load('Assets', ['path' => ROOT . DS, 'autoload' => true, 'bootstrap' => true, 'routes' => true]);
 
 DispatcherFactory::add('Routing');
