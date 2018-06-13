@@ -18,6 +18,7 @@
     "autoload-dev": {
         "psr-4": {
             "Assets\\Test\\": "tests",
+            "App\\": "tests/TestApp/src/",
             "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
         }
     }

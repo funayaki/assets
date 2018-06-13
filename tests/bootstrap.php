@@ -66,6 +66,7 @@ $cache = [
 
 Cache::setConfig($cache);
 
+Plugin::load('Josegonzalez/Upload');
 Plugin::load('Assets', ['path' => ROOT . DS, 'autoload' => true, 'bootstrap' => true, 'routes' => true]);
 
 DispatcherFactory::add('Routing');
