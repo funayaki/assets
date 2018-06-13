@@ -35,7 +35,6 @@ git clone -b master git://github.com/funayaki/assets.git Assets
 In 3.0 you need to enable the plugin your `config/bootstrap.php` file:
 
 ```php
-Plugin::load('Josegonzalez/Upload');
 Plugin::load('Assets', ['bootstrap' => true, 'routes' => true, 'autoload' => true]);
 ```
 
