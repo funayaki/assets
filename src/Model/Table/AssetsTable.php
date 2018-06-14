@@ -63,6 +63,8 @@ class AssetsTable extends Table
                 'path' => 'webroot{DS}files{DS}{model}{DS}{field}{DS}{microtime}{DS}',
             ],
         ]);
+
+        $this->addBehavior('Assets.AssetMarker');
     }
 
     /**
@@ -110,19 +112,6 @@ class AssetsTable extends Table
             ->allowEmpty('params');
 
         return $validator;
-    }
-
-    /**
-     * @param Event $event
-     * @param Asset $entity
-     * @param ArrayObject $options
-     */
-    public function beforeSave(Event $event, Asset $entity, ArrayObject $options)
-    {
-        if ($entity->isNew()) {
-            // TODO Set model by user
-            $entity->model = $this->getAlias();
-        }
     }
 
     /**
