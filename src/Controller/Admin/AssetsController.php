@@ -128,7 +128,7 @@ class AssetsController extends AppController
 
     /**
      * TODO
-     * @param Controller $controller
+     * @param \Cake\Controller\Controller $controller
      * @return array
      */
     protected function _getRedirectUrl(Controller $controller)
