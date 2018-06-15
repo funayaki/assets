@@ -38,8 +38,10 @@ class ModelMarkerBehavior extends Behavior
     {
         $method = $this->getConfig('method');
         $field = $this->getConfig('field');
-        if ($entity->isNew() && is_callable(array($this->getTable(), $method))) {
-            $entity->{$field} = call_user_func(array($this->getTable(), $method));
+
+        $callable = [$this->getTable(), $method];
+        if ($entity->isNew() && is_callable($callable)) {
+            $entity->{$field} = call_user_func($callable);
         }
     }
 }
