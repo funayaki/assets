@@ -81,7 +81,7 @@ class AssetsController extends AppController
      * Delete method
      *
      * @param string|null $id Asset id.
-     * @return \Cake\Http\Response|null Redirects to index.
+     * @return \Cake\Http\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
@@ -94,9 +94,10 @@ class AssetsController extends AppController
             $this->Flash->error(__d('funayaki', 'The asset could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect($this->referer([
-            'action' => 'index'
-        ]));
+        // TODO
+        return $this->redirect($this->referer(
+            $this->_getRedirectUrl($this)
+        ));
     }
 
     /**
