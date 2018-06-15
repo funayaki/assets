@@ -6,7 +6,7 @@ use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
 use Cake\ORM\Behavior;
 
-class AssetMarkerBehavior extends Behavior
+class ModelMarkerBehavior extends Behavior
 {
     /**
      * @var array
