@@ -20,7 +20,7 @@ class AssetsController extends AppController
     {
         $assets = $this->paginate($this->loadModel(), [
             'order' => [
-                'Assets.created' => 'desc'
+                $this->loadModel()->getAlias() . '.created' => 'desc'
             ]
         ]);
 
