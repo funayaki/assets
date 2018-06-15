@@ -1,6 +1,8 @@
 <?php
 namespace Assets\Controller\Admin;
 
+use Cake\Controller\Controller;
+
 /**
  * Assets Controller
  *
@@ -42,7 +44,8 @@ class AssetsController extends AppController
             if ($this->loadModel()->save($asset)) {
                 $this->Flash->success(__d('funayaki', 'The asset has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                // TODO
+                return $this->redirect($this->_getRedirectUrl($this));
             }
             $this->Flash->error(__d('funayaki', 'The asset could not be saved. Please, try again.'));
         }
@@ -66,7 +69,8 @@ class AssetsController extends AppController
             if ($this->loadModel()->save($asset)) {
                 $this->Flash->success(__d('funayaki', 'The asset has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                // TODO
+                return $this->redirect($this->_getRedirectUrl($this));
             }
             $this->Flash->error(__d('funayaki', 'The asset could not be saved. Please, try again.'));
         }
@@ -119,5 +123,15 @@ class AssetsController extends AppController
         $extension = pathinfo($file, PATHINFO_EXTENSION);
         return $response->withFile($file)
             ->withType(strtolower($extension));
+    }
+
+    /**
+     * TODO
+     * @param Controller $controller
+     * @return array
+     */
+    protected function _getRedirectUrl(Controller $controller)
+    {
+        return ['action' => 'index'];
     }
 }
