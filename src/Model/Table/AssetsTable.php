@@ -2,7 +2,7 @@
 namespace Assets\Model\Table;
 
 use ArrayObject;
-use Assets\Model\Entity\Asset;
+use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
 use Cake\Filesystem\Folder;
 use Cake\ORM\Table;
@@ -116,10 +116,10 @@ class AssetsTable extends Table
 
     /**
      * @param Event $event
-     * @param Asset $entity
+     * @param EntityInterface $entity
      * @param ArrayObject $options
      */
-    public function afterSave(Event $event, Asset $entity, ArrayObject $options)
+    public function afterSave(Event $event, EntityInterface $entity, ArrayObject $options)
     {
         if (!$entity->isNew()) {
             $folder = new Folder(ROOT . DS . $entity->getOriginal('dir'));

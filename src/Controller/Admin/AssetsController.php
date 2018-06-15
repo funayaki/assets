@@ -18,7 +18,7 @@ class AssetsController extends AppController
      */
     public function index()
     {
-        $assets = $this->paginate($this->getAssetsTable(), [
+        $assets = $this->paginate($this->loadModel(), [
             'order' => [
                 'Assets.created' => 'desc'
             ]
@@ -36,10 +36,10 @@ class AssetsController extends AppController
     {
         $this->viewBuilder()->setTemplate('form');
 
-        $asset = $this->getAssetsTable()->newEntity();
+        $asset = $this->loadModel()->newEntity();
         if ($this->request->is('post')) {
-            $asset = $this->getAssetsTable()->patchEntity($asset, $this->request->getData());
-            if ($this->getAssetsTable()->save($asset)) {
+            $asset = $this->loadModel()->patchEntity($asset, $this->request->getData());
+            if ($this->loadModel()->save($asset)) {
                 $this->Flash->success(__d('funayaki', 'The asset has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -58,12 +58,12 @@ class AssetsController extends AppController
     {
         $this->viewBuilder()->setTemplate('form');
 
-        $asset = $this->getAssetsTable()->get($id, [
+        $asset = $this->loadModel()->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $asset = $this->getAssetsTable()->patchEntity($asset, $this->request->getData());
-            if ($this->getAssetsTable()->save($asset)) {
+            $asset = $this->loadModel()->patchEntity($asset, $this->request->getData());
+            if ($this->loadModel()->save($asset)) {
                 $this->Flash->success(__d('funayaki', 'The asset has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -83,8 +83,8 @@ class AssetsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $asset = $this->getAssetsTable()->get($id);
-        if ($this->getAssetsTable()->delete($asset)) {
+        $asset = $this->loadModel()->get($id);
+        if ($this->loadModel()->delete($asset)) {
             $this->Flash->success(__d('funayaki', 'The asset has been deleted.'));
         } else {
             $this->Flash->error(__d('funayaki', 'The asset could not be deleted. Please, try again.'));
@@ -104,7 +104,7 @@ class AssetsController extends AppController
      */
     public function download($id = null)
     {
-        $asset = $this->getAssetsTable()->get($id);
+        $asset = $this->loadModel()->get($id);
 
         $file = ROOT . DS . $asset->dir . $asset->file_name;
 
@@ -118,13 +118,5 @@ class AssetsController extends AppController
         $extension = pathinfo($file, PATHINFO_EXTENSION);
         return $response->withFile($file)
             ->withType(strtolower($extension));
-    }
-
-    /**
-     * @return \Assets\Model\Table\AssetsTable
-     */
-    protected function getAssetsTable()
-    {
-        return $this->Assets;
     }
 }
