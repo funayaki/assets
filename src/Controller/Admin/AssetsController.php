@@ -106,6 +106,7 @@ class AssetsController extends AppController
     {
         $asset = $this->loadModel()->get($id);
 
+        // TODO Get file path to be read from settings
         $file = ROOT . DS . $asset->dir . $asset->file_name;
 
         $response = $this->response
