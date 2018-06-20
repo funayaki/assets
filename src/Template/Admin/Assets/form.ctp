@@ -6,13 +6,9 @@
 
 $this->extend('Cirici/AdminLTE./Common/form');
 
-$this->start('breadcrumb');
 $this->Breadcrumbs
     ->add(__d('funayaki', 'Assets'), ['action' => 'index'])
     ->add(__d('funayaki', 'Add'), $this->request->getRequestTarget());
-
-echo $this->Breadcrumbs->render();
-$this->end();
 
 $this->assign('form-start', $this->Form->create($asset, [
     'type' => 'file',
