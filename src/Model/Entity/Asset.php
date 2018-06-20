@@ -42,4 +42,12 @@ class Asset extends Entity
         'modified' => true,
         'created' => true
     ];
+
+    /**
+     * @return string
+     */
+    protected function _getPath()
+    {
+        return $this->_properties['dir'] . $this->_properties['file_name'];
+    }
 }

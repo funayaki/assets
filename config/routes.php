@@ -7,6 +7,10 @@ Router::plugin(
     'Assets',
     ['path' => '/'],
     function (RouteBuilder $routes) {
+        $routes->scope('/assets', [], function (RouteBuilder $routes) {
+            $routes->fallbacks();
+        });
+
         $routes->prefix('admin', function (RouteBuilder $routes) {
             $routes->scope('/assets', [], function (RouteBuilder $routes) {
                 $routes->fallbacks();
