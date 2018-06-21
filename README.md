@@ -6,28 +6,12 @@
 
 ## Installation
 
-_[Manual]_
+You can install this plugin into your CakePHP application using [composer](http://getcomposer.org).
 
-* Download and unzip the repo (see the download button somewhere on this git page)
-* Copy the resulting folder into `plugins`
-* Rename the folder you just copied to `Assets`
+The recommended way to install composer packages is:
 
-_[GIT Submodule]_
-
-In your `app` directory type:
-
-```shell
-git submodule add -b master git://github.com/funayaki/assets.git plugins/Assets
-git submodule init
-git submodule update
 ```
-
-_[GIT Clone]_
-
-In your `plugins` directory type:
-
-```shell
-git clone -b master git://github.com/funayaki/assets.git Assets
+composer require funayaki/assets:dev-master
 ```
 
 ### Enable plugin
