@@ -64,7 +64,7 @@ class AssetsTable extends Table
             ],
         ]);
 
-        $this->addBehavior('Assets.ModelMarker');
+        $this->addBehavior('Utility.ModelMarker');
     }
 
     /**
