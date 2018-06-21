@@ -6,7 +6,7 @@
     "require": {
         "cakephp/cakephp": "^3.4",
         "josegonzalez/cakephp-upload": "^3.8",
-        "funayaki/utility": "dev-master"
+        "funayaki/utility": "^0.0.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7|^6.0"
