@@ -24,6 +24,7 @@ $this->end();
 <?php $this->start('table-header'); ?>
 <thead>
 <tr>
+    <th></th>
     <th><?= $this->Paginator->sort('id') ?></th>
     <th><?= $this->Paginator->sort('file_name') ?></th>
     <th><?= $this->Paginator->sort('file_type') ?></th>
@@ -39,6 +40,7 @@ $this->end();
 <tbody>
 <?php foreach ($assets as $asset): ?>
     <tr>
+        <td><?= $this->Html->image(\Cake\Routing\Router::url(['action' => 'download', $asset->id]), ['width' => 75]) ?></td>
         <td><?= $this->Number->format($asset->id) ?></td>
         <td><?= h($asset->file_name) ?></td>
         <td><?= h($asset->file_type) ?></td>
