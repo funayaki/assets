@@ -42,7 +42,7 @@ $this->end();
         <td><?= $this->Number->format($asset->id) ?></td>
         <td><?= h($asset->file_name) ?></td>
         <td><?= h($asset->file_type) ?></td>
-        <td><?= $this->Number->format($asset->file_size) ?></td>
+        <td><?= $this->Number->toReadableSize($asset->file_size) ?></td>
         <td><?= h($asset->modified) ?></td>
         <td><?= h($asset->created) ?></td>
         <td class="actions" style="white-space:nowrap">
