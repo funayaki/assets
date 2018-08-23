@@ -7,14 +7,14 @@
 $this->extend('Cirici/AdminLTE./Common/form');
 
 $this->Breadcrumbs
-    ->add(__d('funayaki', 'Assets'), ['action' => 'index']);
+    ->add(__d('localized', 'Assets'), ['action' => 'index']);
 
 if ($this->request->params['action'] == 'edit') {
-    $this->Breadcrumbs->add(__d('funayaki', 'Edit'), $this->request->getRequestTarget());
+    $this->Breadcrumbs->add(__d('localized', 'Edit'), $this->request->getRequestTarget());
 }
 
 if ($this->request->params['action'] == 'add') {
-    $this->Breadcrumbs->add(__d('funayaki', 'Add'), $this->request->getRequestTarget());
+    $this->Breadcrumbs->add(__d('localized', 'Add'), $this->request->getRequestTarget());
 }
 
 $this->assign('form-start', $this->Form->create($asset, [
@@ -29,7 +29,7 @@ echo $this->Form->control('file_name', [
 $this->end();
 
 $this->start('form-button');
-echo $this->Form->button(__d('funayaki', 'Submit'));
+echo $this->Form->button(__d('localized', 'Upload'));
 $this->end();
 
 $this->assign('form-end', $this->Form->end());

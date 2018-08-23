@@ -7,17 +7,10 @@
 $this->extend('Cirici/AdminLTE./Common/index');
 
 $this->Breadcrumbs
-    ->add(__d('funayaki', 'Assets'), ['action' => 'index']);
+    ->add(__d('localized', 'Assets'), ['action' => 'index']);
 
 $this->start('page-numbers');
 echo $this->Paginator->numbers();
-$this->end();
-
-$this->append('header-actions');
-echo $this->Html->link(__d('funayaki', 'New Asset'),
-    ['action' => 'add'],
-    ['class' => 'btn btn-default pull-right']
-);
 $this->end();
 ?>
 
@@ -31,7 +24,7 @@ $this->end();
     <th><?= $this->Paginator->sort('file_size') ?></th>
     <th><?= $this->Paginator->sort('modified') ?></th>
     <th><?= $this->Paginator->sort('created') ?></th>
-    <th><?= __d('funayaki', 'Actions') ?></th>
+    <th><?= __d('localized', 'Actions') ?></th>
 </tr>
 </thead>
 <?php $this->end(); ?>
@@ -48,9 +41,9 @@ $this->end();
         <td><?= h($asset->modified) ?></td>
         <td><?= h($asset->created) ?></td>
         <td class="actions" style="white-space:nowrap">
-            <?= $this->Html->link(__d('funayaki', 'Download'), ['action' => 'download', $asset->id], ['class' => 'btn btn-default btn-xs', 'target' => '_blank']) ?>
-            <?= $this->Html->link(__d('funayaki', 'Edit'), ['action' => 'edit', $asset->id], ['class' => 'btn btn-default btn-xs']) ?>
-            <?= $this->Form->postLink(__d('funayaki', 'Delete'), ['action' => 'delete', $asset->id], ['confirm' => __d('funayaki', 'Are you sure?', $asset->id), 'class' => 'btn btn-danger btn-xs']) ?>
+            <?= $this->Html->link(__d('localized', 'Download'), ['action' => 'download', $asset->id], ['class' => 'btn btn-default btn-xs', 'target' => '_blank']) ?>
+            <?= $this->Html->link(__d('localized', 'Edit'), ['action' => 'edit', $asset->id], ['class' => 'btn btn-default btn-xs']) ?>
+            <?= $this->Form->postLink(__d('localized', 'Delete'), ['action' => 'delete', $asset->id], ['confirm' => __d('localized', 'Are you sure you want to delete # {0}?', $asset->id), 'class' => 'btn btn-danger btn-xs']) ?>
         </td>
     </tr>
 <?php endforeach; ?>

@@ -42,12 +42,12 @@ class AssetsController extends AppController
         if ($this->request->is('post')) {
             $asset = $this->loadModel()->patchEntity($asset, $this->request->getData());
             if ($this->loadModel()->save($asset)) {
-                $this->Flash->success(__d('funayaki', 'The asset has been saved.'));
+                $this->Flash->success(__d('localized', 'The {0} has been saved.', [__d('localized', 'file')]));
 
                 // TODO
                 return $this->redirect($this->_getRedirectUrl($this));
             }
-            $this->Flash->error(__d('funayaki', 'The asset could not be saved. Please, try again.'));
+            $this->Flash->error(__d('localized', 'The {0} could not be saved. Please, try again.', [__d('localized', 'file')]));
         }
         $this->set(compact('asset'));
     }
@@ -67,12 +67,12 @@ class AssetsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $asset = $this->loadModel()->patchEntity($asset, $this->request->getData());
             if ($this->loadModel()->save($asset)) {
-                $this->Flash->success(__d('funayaki', 'The asset has been saved.'));
+                $this->Flash->success(__d('localized', 'The {0} has been saved.', [__d('localized', 'file')]));
 
                 // TODO
                 return $this->redirect($this->_getRedirectUrl($this));
             }
-            $this->Flash->error(__d('funayaki', 'The asset could not be saved. Please, try again.'));
+            $this->Flash->error(__d('localized', 'The {0} could not be saved. Please, try again.', [__d('localized', 'file')]));
         }
         $this->set(compact('asset'));
     }
@@ -89,9 +89,9 @@ class AssetsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $asset = $this->loadModel()->get($id);
         if ($this->loadModel()->delete($asset)) {
-            $this->Flash->success(__d('funayaki', 'The asset has been deleted.'));
+            $this->Flash->success(__d('localized', 'The {0} has been deleted.', [__d('localized', 'file')]));
         } else {
-            $this->Flash->error(__d('funayaki', 'The asset could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('localized', 'The {0} could not be deleted. Please, try again.', [__d('localized', 'file')]));
         }
 
         // TODO

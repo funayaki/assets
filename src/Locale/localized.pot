@@ -1,0 +1,70 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2018-08-23 16:24+0900\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/Admin/AssetsController.php:45;70
+msgid "The {0} has been saved."
+msgstr ""
+
+#: Controller/Admin/AssetsController.php:45;50;70;75;92;94
+msgid "file"
+msgstr ""
+
+#: Controller/Admin/AssetsController.php:50;75
+msgid "The {0} could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/AssetsController.php:92
+msgid "The {0} has been deleted."
+msgstr ""
+
+#: Controller/Admin/AssetsController.php:94
+msgid "The {0} could not be deleted. Please, try again."
+msgstr ""
+
+#: Template/Admin/Assets/form.ctp:10
+#: Template/Admin/Assets/index.ctp:10
+msgid "Assets"
+msgstr ""
+
+#: Template/Admin/Assets/form.ctp:13
+#: Template/Admin/Assets/index.ctp:45
+msgid "Edit"
+msgstr ""
+
+#: Template/Admin/Assets/form.ctp:17
+msgid "Add"
+msgstr ""
+
+#: Template/Admin/Assets/form.ctp:32
+msgid "Upload"
+msgstr ""
+
+#: Template/Admin/Assets/index.ctp:27
+msgid "Actions"
+msgstr ""
+
+#: Template/Admin/Assets/index.ctp:44
+msgid "Download"
+msgstr ""
+
+#: Template/Admin/Assets/index.ctp:46
+msgid "Delete"
+msgstr ""
+
+#: Template/Admin/Assets/index.ctp:46
+msgid "Are you sure you want to delete # {0}?"
+msgstr ""
+
