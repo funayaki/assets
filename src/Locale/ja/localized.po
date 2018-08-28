@@ -1,0 +1,68 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2018-08-28 13:03+0900\n"
+"PO-Revision-Date: 2018-08-28 13:04+0900\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.1.1\n"
+"Last-Translator: \n"
+"Language: ja\n"
+
+#: Controller/Admin/AssetsController.php:45;70
+msgid "The {0} has been saved."
+msgstr "{0}を保存しました。"
+
+#: Controller/Admin/AssetsController.php:45;50;70;75;92;94
+msgid "File"
+msgstr "ファイル"
+
+#: Controller/Admin/AssetsController.php:50;75
+msgid "The {0} could not be saved. Please, try again."
+msgstr "{0}を保存できませんでした。もう一度試してください。"
+
+#: Controller/Admin/AssetsController.php:92
+msgid "The {0} has been deleted."
+msgstr "{0}を削除しました。"
+
+#: Controller/Admin/AssetsController.php:94
+msgid "The {0} could not be deleted. Please, try again."
+msgstr "{0}を削除できませんでした。もう一度試してください。"
+
+#: Template/Admin/Assets/form.ctp:10 Template/Admin/Assets/index.ctp:10
+msgid "Assets"
+msgstr "アセット"
+
+#: Template/Admin/Assets/form.ctp:13 Template/Admin/Assets/index.ctp:45
+msgid "Edit"
+msgstr "編集"
+
+#: Template/Admin/Assets/form.ctp:17
+msgid "Add"
+msgstr "追加"
+
+#: Template/Admin/Assets/form.ctp:32
+msgid "Upload"
+msgstr "アップロード"
+
+#: Template/Admin/Assets/index.ctp:27
+msgid "Actions"
+msgstr "アクション"
+
+#: Template/Admin/Assets/index.ctp:44
+msgid "Download"
+msgstr "ダウンロード"
+
+#: Template/Admin/Assets/index.ctp:46
+msgid "Delete"
+msgstr "削除"
+
+#: Template/Admin/Assets/index.ctp:46
+msgid "Are you sure you want to delete # {0}?"
+msgstr "{0}を削除してもよろしいですか？"
