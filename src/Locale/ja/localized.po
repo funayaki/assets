@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2018-08-28 16:15+0900\n"
-"PO-Revision-Date: 2018-08-28 16:02+0900\n"
+"POT-Creation-Date: 2018-08-28 16:21+0900\n"
+"PO-Revision-Date: 2018-08-28 16:22+0900\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -39,7 +39,7 @@ msgstr "{0}を削除できませんでした。もう一度試してください
 msgid "Assets"
 msgstr "アイテム"
 
-#: Template/Admin/Assets/form.ctp:15 Template/Admin/Assets/index.ctp:47
+#: Template/Admin/Assets/form.ctp:15 Template/Admin/Assets/index.ctp:41
 msgid "Edit"
 msgstr "編集"
 
@@ -51,18 +51,30 @@ msgstr "追加"
 msgid "Upload"
 msgstr "アップロード"
 
-#: Template/Admin/Assets/index.ctp:29
+#: Template/Admin/Assets/index.ctp:23
+msgid "File Name"
+msgstr "ファイル名"
+
+#: Template/Admin/Assets/index.ctp:24
+msgid "File Type"
+msgstr "ファイルの種類"
+
+#: Template/Admin/Assets/index.ctp:25
+msgid "File Size"
+msgstr "ファイルサイズ"
+
+#: Template/Admin/Assets/index.ctp:26
 msgid "Actions"
 msgstr "アクション"
 
-#: Template/Admin/Assets/index.ctp:46
+#: Template/Admin/Assets/index.ctp:40
 msgid "Download"
 msgstr "ダウンロード"
 
-#: Template/Admin/Assets/index.ctp:48
+#: Template/Admin/Assets/index.ctp:42
 msgid "Delete"
 msgstr "削除"
 
-#: Template/Admin/Assets/index.ctp:48
+#: Template/Admin/Assets/index.ctp:42
 msgid "Are you sure you want to delete # {0}?"
 msgstr "{0}を削除してもよろしいですか？"
