@@ -6,6 +6,8 @@
 
 $this->extend('Cirici/AdminLTE./Common/form');
 
+$this->assign('title', __d('localized', 'Assets'));
+
 $this->Breadcrumbs
     ->add(__d('localized', 'Assets'), ['action' => 'index']);
 

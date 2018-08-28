@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2018-08-28 10:13+0900\n"
+"POT-Creation-Date: 2018-08-28 15:59+0900\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -34,21 +34,21 @@ msgstr ""
 msgid "The {0} could not be deleted. Please, try again."
 msgstr ""
 
-#: Template/Admin/Assets/form.ctp:10
+#: Template/Admin/Assets/form.ctp:9;12
 #: Template/Admin/Assets/index.ctp:10
 msgid "Assets"
 msgstr ""
 
-#: Template/Admin/Assets/form.ctp:13
+#: Template/Admin/Assets/form.ctp:15
 #: Template/Admin/Assets/index.ctp:45
 msgid "Edit"
 msgstr ""
 
-#: Template/Admin/Assets/form.ctp:17
+#: Template/Admin/Assets/form.ctp:19
 msgid "Add"
 msgstr ""
 
-#: Template/Admin/Assets/form.ctp:32
+#: Template/Admin/Assets/form.ctp:34
 msgid "Upload"
 msgstr ""
 
