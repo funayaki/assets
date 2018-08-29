@@ -21,11 +21,11 @@ $this->end();
 <tr>
     <th></th>
     <th><?= $this->Paginator->sort('id') ?></th>
-    <th><?= $this->Paginator->sort('file_name') ?></th>
-    <th><?= $this->Paginator->sort('file_type') ?></th>
-    <th><?= $this->Paginator->sort('file_size') ?></th>
-    <th><?= $this->Paginator->sort('modified') ?></th>
-    <th><?= $this->Paginator->sort('created') ?></th>
+    <th><?= $this->Paginator->sort('file_name', __d('localized', 'File Name')) ?></th>
+    <th><?= $this->Paginator->sort('file_type', __d('localized', 'File Type')) ?></th>
+    <th><?= $this->Paginator->sort('file_size', __d('localized', 'File Size')) ?></th>
+    <th><?= $this->Paginator->sort('created', __d('localized', 'Created')) ?></th>
+    <th><?= $this->Paginator->sort('modified', __d('localized', 'Modified')) ?></th>
     <th><?= __d('localized', 'Actions') ?></th>
 </tr>
 </thead>
@@ -40,8 +40,8 @@ $this->end();
         <td><?= h($asset->file_name) ?></td>
         <td><?= h($asset->file_type) ?></td>
         <td><?= $this->Number->toReadableSize($asset->file_size) ?></td>
-        <td><?= h($asset->modified) ?></td>
         <td><?= h($asset->created) ?></td>
+        <td><?= h($asset->modified) ?></td>
         <td class="actions" style="white-space:nowrap">
             <?= $this->Html->link(__d('localized', 'Download'), ['action' => 'download', $asset->id], ['class' => 'btn btn-default btn-xs', 'target' => '_blank']) ?>
             <?= $this->Html->link(__d('localized', 'Edit'), ['action' => 'edit', $asset->id], ['class' => 'btn btn-default btn-xs']) ?>
