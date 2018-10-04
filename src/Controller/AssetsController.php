@@ -22,20 +22,16 @@ class AssetsController extends AppController
      */
     public function download($id = null)
     {
-        $asset = $this->loadModel()->get($id);
-
-        // TODO Get file path to be read from settings
-        $file = ROOT . DS . $asset->dir . $asset->file_name;
+        $file = $this->loadModel()->getFile($id);
 
         $response = $this->response
-            ->withModified(filemtime($file));
+            ->withModified(filemtime($file->pwd()));
 
         if ($response->checkNotModified($this->request)) {
             return $response;
         }
 
-        $extension = pathinfo($file, PATHINFO_EXTENSION);
-        return $response->withFile($file)
-            ->withType(strtolower($extension));
+        return $response->withFile($file->pwd())
+            ->withType(strtolower($file->ext()));
     }
 }

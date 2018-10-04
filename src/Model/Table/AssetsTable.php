@@ -4,6 +4,7 @@ namespace Assets\Model\Table;
 use ArrayObject;
 use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
+use Cake\Filesystem\File;
 use Cake\Filesystem\Folder;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -125,5 +126,17 @@ class AssetsTable extends Table
             $folder = new Folder(ROOT . DS . $entity->getOriginal('dir'));
             $folder->delete();
         }
+    }
+
+    /**
+     * Return file
+     *
+     * @param $id
+     * @return \Cake\Filesystem\File
+     */
+    public function getFile($id)
+    {
+        $asset = $this->get($id);
+        return new File(ROOT . DS . $asset->dir . $asset->file_name);
     }
 }
