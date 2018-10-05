@@ -4,10 +4,10 @@ namespace Assets\Model\Table;
 use ArrayObject;
 use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
-use Cake\Filesystem\File;
 use Cake\Filesystem\Folder;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Josegonzalez\Upload\File\Path\ProcessorInterface;
 
 /**
  * Assets Model
@@ -22,8 +22,25 @@ use Cake\Validation\Validator;
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class AssetsTable extends Table
+class AssetsTable extends Table implements DuplicateAwareInterface
 {
+
+    const FIELD_NAME = 'file_name';
+
+    /**
+     * @var
+     */
+    protected $_basepath;
+
+    /**
+     * @var
+     */
+    protected $_pathProcessor;
+
+    /**
+     * @var
+     */
+    protected $_foreign_key;
 
     /**
      * Initialize method
@@ -48,7 +65,7 @@ class AssetsTable extends Table
             // Keep in mind that while this plugin does not have any limits in terms of
             // number of files uploaded per request, you should keep this down in order
             // to decrease the ability of your users to block other requests.
-            'file_name' => [
+            self::FIELD_NAME => [
                 'deleteCallback' => function ($path, $entity, $field, $settings) {
                     // When deleting the entity, the original will be removed
                     // when keepFilesOnDelete is set to false
@@ -62,6 +79,20 @@ class AssetsTable extends Table
                     'type' => 'file_type',
                 ],
                 'path' => 'webroot{DS}files{DS}{model}{DS}{field}{DS}{microtime}{DS}',
+            ],
+        ]);
+
+        // add Duplicatable behavior
+        $this->addBehavior('Duplicatable.Duplicatable', [
+            'finder' => 'all',
+            'remove' => ['created', 'modified', 'created_by', 'modified_by'],
+            'set' => [
+                'dir' => function ($entity) {
+                    return $this->_getBasepath();
+                },
+                'foreign_key' => function ($entity) {
+                    return $this->getForeignKey();
+                }
             ],
         ]);
 
@@ -116,8 +147,8 @@ class AssetsTable extends Table
     }
 
     /**
-     * @param Event $event
-     * @param EntityInterface $entity
+     * @param \Cake\Event\Event $event
+     * @param \Cake\Datasource\EntityInterface $entity
      * @param ArrayObject $options
      */
     public function afterSave(Event $event, EntityInterface $entity, ArrayObject $options)
@@ -129,14 +160,50 @@ class AssetsTable extends Table
     }
 
     /**
-     * Return file
-     *
-     * @param $id
-     * @return \Cake\Filesystem\File
+     * @param \Cake\Datasource\EntityInterface $entity
+     * @param null $foreignKey
+     * @return \Cake\Datasource\EntityInterface
+     * @throws \Exception
      */
-    public function getFile($id)
+    public function duplicate(EntityInterface $entity, $foreignKey = null)
     {
-        $asset = $this->get($id);
-        return new File(ROOT . DS . $asset->dir . $asset->file_name);
+        $this->_foreign_key = $foreignKey;
+
+        $uploadSettings = $this->behaviors()->get('Upload')->getConfig(self::FIELD_NAME);
+        $pathProcessor = $this->getPathProcessor($entity, [], self::FIELD_NAME, $uploadSettings);
+        $basepath = $this->_getBasepath($pathProcessor);
+
+        $source = $entity->file;
+        if (!$source->exists()) {
+            throw new \Exception('The file could not be found');
+        }
+
+        // TODO Duplicate just the file instead of duplicating the folder
+        if ($source->folder()->copy(ROOT . DS . $basepath)
+            && $this->behaviors()->unload('Upload') // Prevent entity from unsetting file_name by UploadBehavior
+            && $newEntity = $this->behaviors()->get('Duplicatable')->duplicate($entity->id)
+        ) {
+            return $newEntity;
+        }
+
+        throw new \Exception();
+    }
+
+    /**
+     * @param \Josegonzalez\Upload\File\Path\ProcessorInterface $pathProcessor
+     * @return string
+     */
+    protected function _getBasepath(ProcessorInterface $pathProcessor = null)
+    {
+        if ($this->_basepath === null) {
+            $this->_basepath = $pathProcessor->basepath();
+        }
+
+        return $this->_basepath;
+    }
+
+    public function getForeignKey()
+    {
+        return $this->_foreign_key;
     }
 }
