@@ -104,12 +104,13 @@ class AssetsController extends AppController
      * Download method
      *
      * @param string|null $id Asset id.
-     * @return static
+     * @return \Cake\Http\Response
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function download($id = null)
     {
-        $file = $this->loadModel()->getFile($id);
+        $asset = $this->loadModel()->get($id);
+        $file = $asset->file;
 
         $response = $this->response
             ->withModified(filemtime($file->pwd()));

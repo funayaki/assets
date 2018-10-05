@@ -1,6 +1,7 @@
 <?php
 namespace Assets\Model\Entity;
 
+use Cake\Filesystem\File;
 use Cake\ORM\Entity;
 
 /**
@@ -17,6 +18,8 @@ use Cake\ORM\Entity;
  * @property string $params
  * @property \Cake\I18n\FrozenTime $modified
  * @property \Cake\I18n\FrozenTime $created
+ * @property string $path
+ * @property \Cake\Filesystem\File $file
  */
 class Asset extends Entity
 {
@@ -49,5 +52,13 @@ class Asset extends Entity
     protected function _getPath()
     {
         return $this->_properties['dir'] . $this->_properties['file_name'];
+    }
+
+    /**
+     * @return \Cake\Filesystem\File
+     */
+    public function _getFile()
+    {
+        return new File(ROOT . DS . $this->_getPath());
     }
 }
